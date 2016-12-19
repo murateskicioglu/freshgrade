@@ -1,21 +1,22 @@
 var nameparser = require('../name-parser.js');
 
-function assert(expected, actual)
+function assert(testname, expected, actual)
 {
   if (expected == actual)
   {
-    console.log("TEST PASS");
+    console.log("TEST " + testname + " PASS");
   }
   else {
-    console.log("TEST FAIL", " Expected: ", expected, " Actual: ", actual);
+    console.log("TEST " + testname + " FAIL", " Expected: ", expected, " Actual: ", actual);
   }
 }
 
 function test(fullname, firstname, lastname)
 {
+  var testname = fullname.substring(0, 80);
   var parsedName = nameparser.extractNameParts(fullname);
-  assert(firstname,parsedName.firstname);
-  assert(lastname,parsedName.lastname);
+  assert(testname + ' - Firstname: ', firstname,parsedName.firstname);
+  assert(testname + ' - Lastname: ', lastname,parsedName.lastname);
 
 }
 
@@ -64,5 +65,6 @@ test("Darya' Kuzmanov", "Darya'", "Kuzmanov");
 
 // incorrect inputs
 test("!@#$<>#$#$#", null, null);
-var bigname = Array(3000).join("a");
+var bigname = Array(210).join("a");
 test(bigname, null, null);
+test("Onename", "Onename", "");

@@ -72,7 +72,7 @@ router.post('/photo/:student',function(req,res){
     });
 });
 
-// GET STUDENTS OF A TEACHER
+// ADD STUDENT
 router.post('/students', function(req, res) {
    console.log(req.body.student);
     backend.addStudent(JSON.parse(req.body.student), function(err){

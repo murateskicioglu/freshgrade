@@ -1,10 +1,7 @@
-// Generate a v4 UUID (random)
-// const uuidV4 = require('uuid/v4');
 var AWS = require('aws-sdk');
 AWS.config.update({region:'us-east-1'});
 var s3 = new AWS.S3();
-// var Client = require('node-rest-client').Client;
-// var parser = require('./name-parser.js');
+
 var fs = require('fs');
 var S3FS = require('s3fs');
 var md5 = require('js-md5');
@@ -14,8 +11,6 @@ module.exports = {
       UploadProfilePicture(student, fullFileName, resultfn);
     }
 };
-
-
 
 function UploadProfilePicture(student, filename, resultfn)
 {

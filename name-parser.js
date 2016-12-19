@@ -37,9 +37,9 @@ module.exports = {
 var defaultParser = {
   ValidateInput : function ValidateInput(name)
   {
+
     if (name.length > LIMIT)
     {
-      console.log("Over allowed limit");
       return {
         status: 400,
         error: "Name too big"
@@ -76,8 +76,7 @@ var defaultParser = {
       // lastname, firstname
       parsedName.lastname = nameparts[0];
       parsedName.firstname = nameparts[1];
-
-
+      return parsedName;
     }
 
     // Mr. Robert Downey Jr.
@@ -91,6 +90,9 @@ var defaultParser = {
       if (nameparts.length == 1)
       {
         // single name no surname not allowed
+        parsedName.firstname = nameparts[0];
+        parsedName.lastname = '';
+        return parsedName;
       }
       // common case
       if (nameparts.length == 2)

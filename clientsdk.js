@@ -38,42 +38,42 @@ var urllocal = 'http://localhost:8081/api/photo';
 
 function UploadFile(student, filename, resultfn)
 {
-  console.log(filename);
+  ////console.log(filename);
   var formData = {
     id: 'uploadForm',
     userPhoto: fs.createReadStream(filename)
 
   };
 
-  // console.log(formData.userPhoto);
+  // //console.log(formData.userPhoto);
 
   request.post({url:urlaws+'/'+urlencode(student), formData: formData}, function optionalCallback(err, httpResponse, url) {
     if (err) {
-       console.error('upload failed:', err);
+       //console.error('upload failed:', err);
        resultfn(err);
     }
-    console.log('Upload successful!  Server responded with:', url);
+    //console.log('Upload successful!  Server responded with:', url);
     resultfn(err, url);
 
   });
 }
 
 // UploadFile("John Wayne", photo1);
-// console.log('UploaFile -1 returned');
+// //console.log('UploaFile -1 returned');
 // UploadFile("Jane Austin", photo2);
-// console.log('UploaFile -2 returned');
+// //console.log('UploaFile -2 returned');
 // return;
 
 
 function PostCode(studentreq, callback) {
 //
   // Build the post string from an object
-  console.log(studentreq);
+  //console.log(studentreq);
   var data = querystring.stringify({
         student: JSON.stringify(studentreq)
       });
 
-  console.log(data);
+  //console.log(data);
   // An object of options to indicate where to post to
   var post_options = {
       host: host,
@@ -90,7 +90,7 @@ function PostCode(studentreq, callback) {
   var post_req = http.request(post_options, function(res) {
       res.setEncoding('utf8');
       res.on('data', function (chunk) {
-          console.log('Response: ' + chunk);
+          //console.log('Response: ' + chunk);
           callback(null, chunk);
       });
   });
@@ -133,25 +133,34 @@ function GetStudents(teacher, callback){
 }
 
 function GetStudent(student, callback){
-  console.log('/students/' + student);
+  //console.log('/students/' + student);
   var options = SetOptions('/students/' + urlencode(student));
-  console.log(options);
+  //console.log(options);
   HttpRequest(options, callback);
 }
 
 function GetRandomStudent(callback){
-  console.log('/randomstudent');
+  //console.log('/randomstudent');
   var options = SetOptions('/randomstudent');
-  console.log(options);
+  //console.log(options);
   HttpRequest(options, callback);
 }
 
 function DeleteStudent(student, callback){
   // var options = SetOptions('/students/'+ urlencode(student), "DELETE");
-  // console.log(options);
+  // //console.log(options);
   // HttpRequest(options, callback);
 
-  request.delete(urlaws+'/api/students/'+ urlencode(student));
+  request.delete(urlaws+'/api/students/'+ urlencode(student), function(err, data){
+      if (err)
+      {
+        callback(err);
+      }
+      else
+      {
+        callback(null, data);
+      }
+  });
 
 }
 
@@ -169,19 +178,19 @@ function AddStudent(studentreq, callback){
 function HttpRequest(optionsget, callback)
 {
     var reqGet = http.request(optionsget, function(res) {
-        // console.log("statusCode: ", res.statusCode);
-        // console.log(res);
+        // //console.log("statusCode: ", res.statusCode);
+        // //console.log(res);
         if (res.statusCode != 200){
             callback(res.statusMessage);
             return;
         }
 
         res.on('data', function(d) {
-            // console.log('err:', err,'data:', d);
+            // //console.log('err:', err,'data:', d);
             callback(null, JSON.parse(d));
         });
         reqGet.on('error', function(e) {
-            // console.error(e);
+            // ////console.error(e);
             callback(e);
 
         });
@@ -192,15 +201,15 @@ function HttpRequest(optionsget, callback)
 }
 
 // GetStudents('Ken', function(data){
-//    console.log('Get Students Returned', data);
+//    //console.log('Get Students Returned', data);
 // });
 //
 // GetStudent('john-tarzan st.', function(data){
-//    console.log('Get Student Returned', data);
+//    //console.log('Get Student Returned', data);
 // });
 
 
 // GetRandomStudent( function(data){
-//    console.log('Get Random Student Returned', data);
+//    //console.log('Get Random Student Returned', data);
 // });
 // Add Student

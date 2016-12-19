@@ -25,7 +25,7 @@ module.exports = {
          return resultfn(rsp);
       }
 
-      if ( !rsp.firstname || !rsp.firstname ){
+      if ( !rsp.firstname || !rsp.lastname ){
          return resultfn({status: 500});
       }
 
