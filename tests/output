@@ -1,0 +1,65 @@
+TEST: Uploading Profile Pictures
+media/john.png
+/randomstudent
+{ host: 'studentapplication.us-east-1.elasticbeanstalk.com',
+  port: 80,
+  path: '/api/randomstudent',
+  method: 'GET' }
+/students/Eskicioglu-Murat M.
+{ host: 'studentapplication.us-east-1.elasticbeanstalk.com',
+  port: 80,
+  path: '/api/students/Eskicioglu-Murat%20M.',
+  method: 'GET' }
+{ Name: 'Leonard Euler ghxtr',
+  TeacherId: 'Leonardo',
+  Photo: 'sdfdf' }
+student=%7B%22Name%22%3A%22Leonard%20Euler%20ghxtr%22%2C%22TeacherId%22%3A%22Leonardo%22%2C%22Photo%22%3A%22sdfdf%22%7D
+[ { TeacherId: 'Ben',
+    FirstName: 'tarsício',
+    Id: 'da costa-tarsício',
+    LastName: 'da costa' },
+  { TeacherId: 'Ben',
+    FirstName: 'natalia',
+    Id: 'nuñez-natalia',
+    LastName: 'nuñez' },
+  { TeacherId: 'Ben',
+    FirstName: 'marcus',
+    Id: 'sørensen-marcus',
+    LastName: 'sørensen' },
+  { TeacherId: 'Ben',
+    FirstName: 'kate',
+    Id: 'ruiz-kate',
+    LastName: 'ruiz' },
+  { TeacherId: 'Ben',
+    FirstName: 'leroy',
+    Id: 'powell-leroy',
+    LastName: 'powell' },
+  { TeacherId: 'Ben',
+    FirstName: 'timothe',
+    Id: 'vincent-timothe',
+    LastName: 'vincent' },
+  { TeacherId: 'Ben',
+    FirstName: 'gávio',
+    Id: 'nogueira-gávio',
+    LastName: 'nogueira' },
+  { TeacherId: 'Ben',
+    FirstName: 'sophia',
+    Id: 'roy-sophia',
+    LastName: 'roy' },
+  { TeacherId: 'Ben',
+    FirstName: 'micheal',
+    Id: 'mendoza-micheal',
+    LastName: 'mendoza' } ]
+{ FirstName: 'marta',
+  LastName: 'guerrero',
+  Photo: 'https://randomuser.me/api/portraits/thumb/women/39.jpg',
+  TeacherId: 'Ben' }
+Response: OK
+OK
+{ FirstName: 'Murat M.',
+  Id: 'Eskicioglu-Murat M.',
+  LastName: 'Eskicioglu',
+  Photo: 'http://sdfds',
+  TeacherId: 'Ken' }
+Upload successful!  Server responded with: {"photo":"https://s3.amazonaws.com/studentappphotos/148e-Carl%20Sagan-profile.png"}
+{"photo":"https://s3.amazonaws.com/studentappphotos/148e-Carl%20Sagan-profile.png"}

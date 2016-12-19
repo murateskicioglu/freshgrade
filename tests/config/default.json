@@ -1,0 +1,8 @@
+{
+  "Titles" : ["Mrs", "PhD", "MSc", "Sir", "bin", "Mr", "Ms"],
+  "CharacterLimit" : 200,
+  "AllowedPunctuations": " \\.,'\"-",
+  "PickMiddleAsFirstName": true,
+  "MaximumFilesize": 1000000,
+  "UploadDirectory": "./uploads"
+}
